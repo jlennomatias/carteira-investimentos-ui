@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% block conteudo %}
+    <main>
+        <div>
+            <h3>Cadastrar Ativos</h3>
+            <form class="formularioAtivo" action="{{ url_for('criar_ativo') }}" method="post" enctype="multipart/form-data">
+                <figure class="img-thmbnail col-md-4">
+                    <img class="img-fluid" src="{{ url_for('imagem', nome_arquivo='interrogacao.jpg') }}">
+                    <figcaption>
+                        <label class="fileContainer">
+                            Mudar Capa
+                            <input type="file" name="arquivo">
+                        </label>
+                    </figcaption>
+                </figure>
+                {{ form.csrf_token() }}
+                <div class="form-group">
+                    {{ form.codigo_ativo.label(class="form-label") }}
+                    {{ form.codigo_ativo(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.quantidade.label(class="form-label") }}
+                    {{ form.quantidade(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.preco.label(class="form-label") }}
+                    {{ form.preco(class="form-control") }}
+                </div>
+                <div>
+                    {{ form.salvar(class="fbtn btn-primary") }}
+                </div>
+            </form>
+            <a class="btn btn-danger" href="{{ url_for('ativos') }}">Voltar</a>
+        </div>
+    </main>
+{% endblock %}

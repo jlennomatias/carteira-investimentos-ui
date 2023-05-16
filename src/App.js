@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import AuthProvider from './Contexts/AuthContext'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+import Login from './Pages/Login/index'
+import Cadastro from './Pages/Cadastro/index'
+import Home from "./Pages/Home/index"
+import Carteira from "./Pages/Carteira/index"
+import Operacao from "./Pages/Operacao/index"
+import { RequireAuth } from "./Contexts/RequireAuth"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="*" element={<Login />} />
+          <Route path="/cadastrar" element={<Cadastro />} />
+          <Route path="/home" element={<RequireAuth><Home /></RequireAuth>} />
+          <Route path="/carteira" element={<Carteira />} />
+          <Route path="/operacao" element={<Operacao />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  )
 }
 
 export default App;

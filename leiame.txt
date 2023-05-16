@@ -1,0 +1,13 @@
+1 - Validar acesso.
+    - Se sim, validar usuario.
+    - Se não, remover o token e redirecionar para o Login
+
+2 - Logar:
+    - Recebe os dados de Login
+    - Envia uma requisição para o BACKEND validar estes dados.
+    - Estando correto, salvar o token no browser.
+    - Se estiver errado, avisar que está errado.
+
+3 - Deslogar:
+    - Apagar a referencia que existir no browser.
+    - Atualizar a pagina.
